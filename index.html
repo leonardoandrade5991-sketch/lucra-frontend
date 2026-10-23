@@ -13,11 +13,38 @@ html.light{color:#17212b;background:#f5f7f8}html.light .sidebar,html.light .mobi
 
 /* LUCRA 0.7 - Pedidos */
 .order-header-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}.order-header-top h2{margin:0}.order-header-top .sub{margin:6px 0 0}.order-header-top .field{min-width:170px}.order-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}.order-stat{border:1px solid #30373a;border-radius:12px;padding:16px 13px;min-width:0;background:#171b1c}.order-stat span{display:block;font-size:12px;color:#a4b0b3;margin-bottom:9px}.order-stat strong{font-size:20px;letter-spacing:-.5px;overflow-wrap:anywhere}.order-search-label{display:block;margin:16px 0}.orders-list{display:grid;gap:10px}.order-entry{border:1px solid #323a3c;border-radius:12px;overflow:hidden}.order-toggle{display:block;width:100%;text-align:left;background:transparent;border:0;color:inherit;padding:15px}.order-toggle:hover{background:rgba(60,220,135,.045)}.order-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.order-name{color:#a4b0b3;font-size:13px;margin:5px 0 13px}.order-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.order-values small{display:block;color:#9eaaae;font-size:11px;margin-bottom:5px}.order-values b{font-size:14px;overflow-wrap:anywhere}.order-view{display:flex;justify-content:flex-end;align-items:center;gap:5px;color:#b3c0c3;font-size:12px;margin-top:12px}.order-details{padding:15px;border-top:1px solid #323a3c;background:#161a1b}.order-details h3{margin:0 0 12px;font-size:14px}.order-detail-line{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #303638;font-size:13px}.order-detail-line:last-child{border:0}.order-detail-line span{color:#a4b0b3}.order-demo-note{font-size:12px;color:#a4b0b3;margin:12px 0 0}html.light .order-stat{background:#f7f9fa;border-color:#e0e6e8}html.light .order-entry{border-color:#e0e6e8}html.light .order-details{background:#f7f9fa;border-color:#e0e6e8}html.light .order-detail-line{border-color:#e0e6e8}html.light .order-name,html.light .order-stat span,html.light .order-values small,html.light .order-detail-line span{color:#65737a}@media(max-width:650px){.order-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.order-stat{padding:13px}.order-stat strong{font-size:18px}.order-values{gap:7px}.order-values b{font-size:12px}.order-header-top .field{min-width:145px}}
+
+/* LUCRA 0.8 - Autenticacao */
+#lucraApp{display:none}body.auth-ready #authScreen{display:none}body.auth-ready #lucraApp{display:flex}
+.auth-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 50% 0%,#19382b 0%,#101214 48%)}
+.auth-box{width:100%;max-width:430px;background:#1a1d20;border:1px solid #303b36;border-radius:20px;padding:32px;box-shadow:0 18px 60px #0005}
+.auth-brand{text-align:center;font-size:36px;font-weight:850;letter-spacing:-1.5px;margin-bottom:12px}.auth-brand b{color:#22b57a}
+.auth-box h1{font-size:22px;margin:0 0 8px;text-align:center}.auth-intro{color:#9ba7b0;text-align:center;font-size:13px;margin:0 0 23px;line-height:1.5}
+.auth-field{display:block;margin:13px 0;font-size:13px;color:#b5c0c8}.auth-field input{display:block;width:100%;margin-top:7px;padding:13px;background:#111416;color:#e9edf3;border:1px solid #3b4248;border-radius:10px}
+.auth-submit{width:100%;margin-top:10px;background:#229969;color:#fff;border:0;border-radius:10px;padding:13px;font-weight:700}.auth-submit:disabled{opacity:.6;cursor:wait}
+.auth-switch{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:19px}.auth-switch button{background:none;border:0;color:#75dbaa;font-size:13px}
+.auth-message{min-height:22px;margin:13px 0 0;font-size:13px;line-height:1.5;color:#a9e8c6}.auth-message.error{color:#ff9f9f}
+.auth-setup{background:#322b1c;border:1px solid #665632;padding:12px;border-radius:10px;color:#ffe2a0;font-size:12px;line-height:1.6;margin-bottom:15px}
+.auth-signout{border:1px solid #41494d;background:transparent;border-radius:9px;color:#a9e8c6;padding:9px 12px;font-size:12px;margin:12px}
+html.light .auth-screen{background:#eef4f1}html.light .auth-box{background:#fff;border-color:#dce3e7}html.light .auth-field input{background:#fff;color:#17212b;border-color:#ccd5d9}html.light .auth-intro{color:#66737d}
+@media(max-width:650px){.auth-box{padding:24px}.auth-screen{padding:15px}body.auth-ready #lucraApp{display:block}}
 </style>
 </head>
 <body>
+<div id="authScreen" class="auth-screen"><div class="auth-box">
+<div class="auth-brand">LU<b>CRA</b></div>
+<h1 id="authTitle">Entrar na sua conta</h1><p class="auth-intro" id="authIntro">Acesse seu painel com segurança.</p>
+<div id="authSetup" class="auth-setup hidden">Configuração pendente: insira sua chave pública do Supabase no arquivo index.html, na variável SUPABASE_PUBLISHABLE_KEY.</div>
+<form id="authForm">
+<label class="auth-field">E-mail<input id="authEmail" type="email" autocomplete="email" required placeholder="seu@email.com"></label>
+<label class="auth-field" id="authPasswordRow">Senha<input id="authPassword" type="password" minlength="6" autocomplete="current-password" required placeholder="Sua senha"></label>
+<button id="authSubmit" class="auth-submit" type="submit">Entrar</button>
+</form><p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
+<div class="auth-switch"><button id="authLogin" type="button" class="hidden">Entrar</button><button id="authRegister" type="button">Criar conta</button><button id="authReset" type="button">Esqueci minha senha</button></div>
+</div></div>
+<div id="lucraApp">
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true"><symbol id="ico-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="ico-products" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="M3 7v10l9 5 9-5V7M12 12v10"/></symbol><symbol id="ico-orders" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/><path d="M2 3h2l3 13h12l3-10H5"/></symbol><symbol id="ico-finance" viewBox="0 0 24 24"><path d="M16 7.5C15 6.5 13.5 6 12 6c-2.5 0-4 1.2-4 3 0 4.5 8 1.5 8 6 0 1.8-1.5 3-4 3-1.7 0-3.2-.5-4.2-1.5M12 3v18"/></symbol><symbol id="ico-settings" viewBox="0 0 24 24"><path d="M10.3 2h3.4l.6 2.4 1.8.8 2.1-1.3 2.4 2.4-1.3 2.1.8 1.8 2.4.6v3.4l-2.4.6-.8 1.8 1.3 2.1-2.4 2.4-2.1-1.3-1.8.8-.6 2.4h-3.4l-.6-2.4-1.8-.8-2.1 1.3-2.4-2.4 1.3-2.1-.8-1.8L2 13.7v-3.4l2.4-.6.8-1.8-1.3-2.1 2.4-2.4 2.1 1.3 1.8-.8L10.3 2Z"/><circle cx="12" cy="12" r="3"/></symbol></svg>
-<div class="app"><aside class="sidebar"><div class="logo">LU<b>CRA</b></div><nav class="nav" id="desktopNav"><button data-page="overview" class="active"><svg class="nav-icon"><use href="#ico-overview"/></svg> Visão geral</button><button data-page="products"><svg class="nav-icon"><use href="#ico-products"/></svg> Produtos</button><button data-page="orders"><svg class="nav-icon"><use href="#ico-orders"/></svg> Pedidos</button><button data-page="finance"><svg class="nav-icon"><use href="#ico-finance"/></svg> Financeiro</button><button data-page="settings"><svg class="nav-icon"><use href="#ico-settings"/></svg> Configurações</button></nav><div class="sidefoot">LUCRA • Prévia demonstrativa</div></aside>
+<div class="app"><aside class="sidebar"><div class="logo">LU<b>CRA</b></div><nav class="nav" id="desktopNav"><button data-page="overview" class="active"><svg class="nav-icon"><use href="#ico-overview"/></svg> Visão geral</button><button data-page="products"><svg class="nav-icon"><use href="#ico-products"/></svg> Produtos</button><button data-page="orders"><svg class="nav-icon"><use href="#ico-orders"/></svg> Pedidos</button><button data-page="finance"><svg class="nav-icon"><use href="#ico-finance"/></svg> Financeiro</button><button data-page="settings"><svg class="nav-icon"><use href="#ico-settings"/></svg> Configurações</button></nav><div class="sidefoot">LUCRA • Prévia demonstrativa<br><button type="button" class="auth-signout" data-signout>Sair da conta</button></div></aside>
 <main class="main"><div class="top"><div><h1 id="heading">Visão geral</h1><p class="muted" id="description">Acompanhe o desempenho da sua loja.</p></div><div class="controls"><select class="select" id="period" aria-label="Período"><option value="all">Todo o período</option><option value="7">Últimos 7 dias</option><option value="30">Últimos 30 dias</option></select><button class="action" id="themeBtn" type="button">☼ Tema claro</button></div></div>
 <section id="overview"><div class="metrics"><article class="card kpi"><div class="caption">Faturamento</div><div class="number" id="revenue">R$ 231,90</div><div class="hint">Receita demonstrativa</div></article><article class="card kpi"><div class="caption">Pedidos pagos</div><div class="number" id="paid">2</div><div class="hint">Pedidos de teste</div></article><article class="card kpi"><div class="caption">Ticket médio</div><div class="number" id="ticket">R$ 115,95</div><div class="hint">Por pedido pago</div></article><article class="card kpi"><div class="caption">Lucro estimado</div><div class="number" id="profit">—</div><div class="hint">Configure os custos</div></article></div>
 <article class="card goal-card"><div class="goal-head"><h2>Meta de faturamento</h2><button id="goalEditBtn" type="button">Editar meta</button></div><div class="goal-main"><span class="goal-amount" id="goalAmount">—</span><span class="goal-percent" id="goalPercent">—</span></div><div class="goal-track"><div class="goal-progress" id="goalProgress"></div></div><div class="goal-bottom"><span id="goalEarned">Faturado: —</span><span id="goalRemaining">Restante: —</span></div><div class="goal-edit hidden" id="goalEditor"><label class="field">Meta mensal (R$)<input id="goalInput" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="Ex.: 10000"></label><button id="goalSave" type="button">Salvar meta</button></div><p class="note">Meta demonstrativa. A apuração do faturamento mensal real será integrada à Nuvemshop.</p></article>
@@ -48,9 +75,76 @@ html.light{color:#17212b;background:#f5f7f8}html.light .sidebar,html.light .mobi
 <div class="card full"><h2>Custo dos produtos vendidos</h2><p class="sub">Campo provisório até a integração dos custos reais dos produtos. Informe o custo total dos itens vendidos no mês.</p><div class="inline-editor"><label class="field">Custo mensal (R$)<input id="monthlyProductCost" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0,00"></label><button class="primary" id="saveProductCost" type="button">Salvar valor</button></div></div>
 <div class="card full"><h2>Resumo financeiro do mês</h2><div id="financeBreakdown"></div><p class="note">Prévia demonstrativa: o faturamento de R$ 231,90 representa dois pedidos de teste sem datas importadas e não pode ser atribuído com segurança a um mês. Por isso, lucro e margem mensais ficam indisponíveis até a conexão dos pedidos com datas. Os custos são armazenados somente neste navegador.</p></div>
 </section>
-<section id="settings" class="hidden"><div class="card"><h2>Integrações</h2><p class="sub">Nuvemshop • backend de testes configurado separadamente</p><p class="note">A versão visual ainda não está conectada à API. Os números exibidos aqui são demonstrativos. A conexão segura, a autenticação e o suporte a várias lojas serão desenvolvidos antes da disponibilização comercial.</p></div><div class="card full"><h2>Sobre o LUCRA</h2><p class="note">Versão visual 0.7.1 • protótipo navegável para celular e computador.</p></div></section>
-</main></div><nav class="mobile-nav" id="mobileNav"><button data-page="overview" class="active"><svg class="nav-icon"><use href="#ico-overview"/></svg><div>Início</div></button><button data-page="products"><svg class="nav-icon"><use href="#ico-products"/></svg><div>Produtos</div></button><button data-page="orders"><svg class="nav-icon"><use href="#ico-orders"/></svg><div>Pedidos</div></button><button data-page="finance"><svg class="nav-icon"><use href="#ico-finance"/></svg><div>Financeiro</div></button><button data-page="settings"><svg class="nav-icon"><use href="#ico-settings"/></svg><div>Ajustes</div></button></nav>
+<section id="settings" class="hidden"><div class="card"><h2>Sua conta</h2><p class="sub" id="accountEmail">Conta autenticada</p><button type="button" class="action" data-signout>Sair da conta</button></div><div class="card"><h2>Integrações</h2><p class="sub">Nuvemshop • backend de testes configurado separadamente</p><p class="note">A versão visual ainda não está conectada à API. Os números exibidos aqui são demonstrativos. A conexão segura, a autenticação e o suporte a várias lojas serão desenvolvidos antes da disponibilização comercial.</p></div><div class="card full"><h2>Sobre o LUCRA</h2><p class="note">Versão visual 0.8 • autenticação com Supabase. Pedidos e demais dados continuam demonstrativos até a autorização segura no backend.</p></div></section>
+</main></div><nav class="mobile-nav" id="mobileNav"><button data-page="overview" class="active"><svg class="nav-icon"><use href="#ico-overview"/></svg><div>Início</div></button><button data-page="products"><svg class="nav-icon"><use href="#ico-products"/></svg><div>Produtos</div></button><button data-page="orders"><svg class="nav-icon"><use href="#ico-orders"/></svg><div>Pedidos</div></button><button data-page="finance"><svg class="nav-icon"><use href="#ico-finance"/></svg><div>Financeiro</div></button><button data-page="settings"><svg class="nav-icon"><use href="#ico-settings"/></svg><div>Ajustes</div></button></nav></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
+
+// Configuracao publica do Supabase (NUNCA cole secret key/service_role aqui).
+const SUPABASE_URL='https://dwbonmchyoqboeaedbpc.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_CAm534D9DH4mZKi7enLp9Q_AyU9eIfm';
+let lucraAuth=null;
+let authMode='login';
+const authMessage=document.getElementById('authMessage');
+const authForm=document.getElementById('authForm');
+const authSubmit=document.getElementById('authSubmit');
+function authNotice(msg,error=false){authMessage.textContent=msg;authMessage.classList.toggle('error',error)}
+function setAuthMode(mode){
+ authMode=mode;authNotice('');
+ document.getElementById('authTitle').textContent=mode==='login'?'Entrar na sua conta':mode==='register'?'Criar sua conta':'Recuperar senha';
+ document.getElementById('authIntro').textContent=mode==='login'?'Acesse seu painel com segurança.':mode==='register'?'Cadastre-se com seu e-mail para começar.':'Enviaremos um link de recuperação para seu e-mail.';
+ document.getElementById('authPasswordRow').classList.toggle('hidden',mode==='reset');
+ document.getElementById('authPassword').required=mode!=='reset';
+ document.getElementById('authPassword').autocomplete=mode==='register'?'new-password':'current-password';
+ authSubmit.textContent=mode==='login'?'Entrar':mode==='register'?'Criar conta':'Enviar link';
+ document.getElementById('authLogin').classList.toggle('hidden',mode==='login');
+ document.getElementById('authRegister').classList.toggle('hidden',mode==='register');
+ document.getElementById('authReset').classList.toggle('hidden',mode==='reset');
+}
+document.getElementById('authLogin').addEventListener('click',()=>setAuthMode('login'));
+document.getElementById('authRegister').addEventListener('click',()=>setAuthMode('register'));
+document.getElementById('authReset').addEventListener('click',()=>setAuthMode('reset'));
+function showAuthenticated(session){
+ document.body.classList.toggle('auth-ready',!!session);
+ document.getElementById('accountEmail').textContent=session?.user?.email||'Conta autenticada';
+}
+const configured=SUPABASE_PUBLISHABLE_KEY.startsWith('sb_publishable_')&&!!window.supabase?.createClient;
+if(!configured){document.getElementById('authSetup').classList.remove('hidden');authSubmit.disabled=true;authNotice('Configure a chave pública para habilitar o login.',true)}
+else{
+ lucraAuth=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+ lucraAuth.auth.onAuthStateChange((_event,session)=>showAuthenticated(session));
+ lucraAuth.auth.getSession().then(({data,error})=>{if(error)authNotice('Não foi possível recuperar a sessão.',true);showAuthenticated(data?.session||null)}).catch(()=>authNotice('Falha ao conectar ao Supabase.',true));
+}
+authForm.addEventListener('submit',async e=>{
+ e.preventDefault();if(!lucraAuth)return;
+ const email=document.getElementById('authEmail').value.trim();
+ const password=document.getElementById('authPassword').value;
+ authSubmit.disabled=true;authNotice('Aguarde...');
+ try{
+  if(authMode==='login'){
+   const {error}=await lucraAuth.auth.signInWithPassword({email,password});
+   if(error)throw error;
+   authNotice('Login realizado.');
+  }else if(authMode==='register'){
+   const {data,error}=await lucraAuth.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});
+   if(error)throw error;
+   authNotice(data?.session?'Conta criada e acesso liberado.':'Cadastro recebido! Confira seu e-mail e confirme a conta antes de entrar.');
+  }else{
+   const {error}=await lucraAuth.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});
+   if(error)throw error;
+   authNotice('Se o e-mail estiver cadastrado, você receberá as instruções de recuperação.');
+  }
+ }catch(err){authNotice(err?.message||'Não foi possível concluir a solicitação.',true)}
+ finally{authSubmit.disabled=false}
+});
+document.querySelectorAll('[data-signout]').forEach(btn=>btn.addEventListener('click',async()=>{
+ if(!lucraAuth)return;
+ const {error}=await lucraAuth.auth.signOut();
+ if(error){alert('Não foi possível sair da conta.');return}
+ showAuthenticated(null);setAuthMode('login');
+}));
+// O acesso aos dados reais ainda precisa de validacao JWT e autorizacao por loja no backend.
+
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
 // Apenas dados ilustrativos: a API de produtos ainda não está conectada.
 const products=[
