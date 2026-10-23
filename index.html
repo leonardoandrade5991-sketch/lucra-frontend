@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUCRA | Dashboard</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #17212f;
+      --muted: #788392;
+      --line: #e8edf2;
+      --green: #16a36b;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Arial, sans-serif; }
+    header { background: white; border-bottom: 1px solid var(--line); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 24px; font-weight: 800; letter-spacing: -1px; }
+    .logo span { color: var(--green); }
+    .demo { font-size: 12px; color: var(--muted); }
+    main { max-width: 1150px; margin: auto; padding: 24px 16px; }
+    h1 { font-size: 25px; margin: 0 0 7px; }
+    .subtitle { color: var(--muted); margin: 0 0 25px; font-size: 14px; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+    .label { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .value { font-size: 27px; font-weight: 750; }
+    .section { margin-top: 25px; }
+    .section h2 { font-size: 18px; margin: 0 0 14px; }
+    .product { display: flex; align-items: center; gap: 13px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .product:last-child { border: none; }
+    .photo { width: 56px; height: 62px; background: #f1f3f5; border-radius: 9px; display: grid; place-items: center; font-size: 23px; flex-shrink: 0; }
+    .product-info { flex: 1; min-width: 0; }
+    .product-name { font-weight: 650; font-size: 14px; margin-bottom: 7px; }
+    .revenue { color: var(--muted); font-size: 13px; }
+    .quantity { font-weight: 700; font-size: 15px; white-space: nowrap; }
+    .quantity small { display: block; color: var(--muted); font-weight: normal; font-size: 11px; text-align: right; margin-top: 5px; }
+    .notice { color: var(--muted); font-size: 12px; margin-top: 18px; }
+    @media (max-width: 650px) {
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .metrics .card:first-child { grid-column: 1 / -1; }
+      .value { font-size: 24px; }
+      .card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">LU<span>CRA</span></div>
+    <div class="demo">Versão de demonstração</div>
+  </header>
+  <main>
+    <h1>Visão geral</h1>
+    <p class="subtitle">Acompanhe o desempenho da sua loja.</p>
+    <div class="metrics">
+      <div class="card">
+        <div class="label">Faturamento</div>
+        <div class="value">R$ 231,90</div>
+      </div>
+      <div class="card">
+        <div class="label">Pedidos pagos</div>
+        <div class="value">2</div>
+      </div>
+      <div class="card">
+        <div class="label">Ticket médio</div>
+        <div class="value">R$ 115,95</div>
+      </div>
+    </div>
+    <section class="section">
+      <h2>Produtos mais vendidos</h2>
+      <div class="card">
+        <div class="product">
+          <div class="photo">👕</div>
+          <div class="product-info">
+            <div class="product-name">Produto de demonstração 01</div>
+            <div class="revenue">Faturamento: R$ 142,00</div>
+          </div>
+          <div class="quantity">1<small>unidade</small></div>
+        </div>
+        <div class="product">
+          <div class="photo">👕</div>
+          <div class="product-info">
+            <div class="product-name">Produto de demonstração 02</div>
+            <div class="revenue">Faturamento: R$ 89,90</div>
+          </div>
+          <div class="quantity">1<small>unidade</small></div>
+        </div>
+      </div>
+    </section>
+    <p class="notice">Prévia visual com dados fixos de demonstração. A conexão automática será adicionada nas próximas etapas.</p>
+  </main>
+</body>
+</html>
